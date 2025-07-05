@@ -1,0 +1,64 @@
+name: YOUR NAME HERE
+
+contact_information:
+  Email: your.email@example.com
+  Mobile: "01234 567890"
+  Location: Your City, Country
+
+links:
+  LinkedIn: https://linkedin.com/in/your-profile
+  GitHub: https://github.com/your-username
+
+personal_summary: >
+  Brief personal summary highlighting your experience, skills, and career goals. 
+  This should be a concise paragraph that gives an overview of your professional background.
+
+key_skills:
+  Category 1:
+    - Skill 1
+    - Skill 2
+    - Skill 3
+  Category 2:
+    - Skill 1
+
+professional_experience:
+  - job_title: Job Title 1
+    company: Company Name 1
+    period: Start Date - End Date
+    responsibilities:
+      - Brief description of responsibility or achievement.
+      - Another responsibility or achievement.
+
+  - title: Job Title 2
+    company: Company Name 2
+    period: Start Date - End Date
+    responsibilities:
+      - Brief description of responsibility or achievement.
+      - Another responsibility or achievement.
+
+certifications:
+  Microsoft:
+    - certification: Example Certification 1
+      date_obtained: YYYY-MM-DD
+  CompTIA:
+    - certification: Example Certification 1
+      date_obtained: YYYY-MM-DD
+
+ecucation:
+  university:
+    - qualification: Example Qualification
+      institution: Example University
+      period: YYYY-YYYY
+
+  college:
+    - qualification: Example Qualification
+      institution: Example College
+      period: YYYY-YYYY
+
+  secondary_school:
+    - GCSEs:
+        English: Grade
+        Maths: Grade
+        Science: Grade
+      school: Example School
+      period: YYYY-YYYY
