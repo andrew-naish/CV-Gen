@@ -16,11 +16,28 @@ yaml_path = args.yaml
 yaml_path_filename = os.path.basename(yaml_path)
 
 def add_heading(doc, heading, level=1, space_before=Pt(0)):
+    """
+    Adds a heading to the document with the specified text, level, and optional space before.
+    Args:
+        doc: The Document object.
+        heading: The heading text.
+        level: The heading level (default 1).
+        space_before: Space before the heading (default 0).
+    Returns:
+        The heading paragraph object.
+    """
     heading = doc.add_heading(heading, level)
     heading.paragraph_format.space_before = space_before
     return heading
 
 def add_heading_list(doc, heading_text, items):
+    """
+    Adds a heading and a list of key-value pairs, each on a new line, with keys in bold.
+    Args:
+        doc: The Document object.
+        heading_text: The heading text.
+        items: Dictionary of key-value pairs to display.
+    """
     add_heading(doc, heading_text)
     paragraph = doc.add_paragraph()
     item_count = len(items)
@@ -33,13 +50,24 @@ def add_heading_list(doc, heading_text, items):
             paragraph.add_run("\n")
 
 def add_heading_text(doc, heading_text, text):
+    """
+    Adds a heading and a single block of text below it.
+    Args:
+        doc: The Document object.
+        heading_text: The heading text.
+        text: The text to display under the heading.
+    """
     add_heading(doc, heading_text)
     paragraph = doc.add_paragraph()
     paragraph.add_run(text)
 
 def add_heading_bulleted_category_list(doc, heading_text, items):
     """
-    Adds a heading and a list of categories, where each key is bold and each value is a comma-separated list on the same line. The values are sorted alphabetically.
+    Adds a heading and a bulleted list of categories, where each key is bold and each value is a comma-separated list on the same line. The values are sorted alphabetically.
+    Args:
+        doc: The Document object.
+        heading_text: The heading text.
+        items: Dictionary where each key is a category and each value is a list or string.
     """
     add_heading(doc, heading_text)
     for key, value in items.items():
