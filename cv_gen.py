@@ -182,6 +182,11 @@ os.makedirs(output_dir, exist_ok=True)
 
 # save the document
 output_file_path = os.path.join(output_dir, f"{output_name}.docx")
-doc.save(output_file_path)
-logging.info(f"CV saved to {output_file_path}")
+output_file_path_abs = os.path.abspath(output_file_path)
+try:
+    doc.save(output_file_path_abs)
+    logging.info(f"CV saved to {output_file_path_abs}")
+except Exception as e:
+    logging.error(f"Failed to save CV: {e} (Path: {output_file_path_abs})")
+    print(f"Error: Failed to save CV to {output_file_path_abs}. {e}")
 logging.info("Script finished.")
