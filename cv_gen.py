@@ -1,10 +1,10 @@
-import yaml
-from docx import Document
-from docx.oxml.ns import qn
-from docx.shared import Pt
 import os
 import argparse
 from datetime import datetime
+import yaml
+from docx import Document
+from docx.shared import Pt
+from docx.oxml.ns import qn
 
 ## Init
 
