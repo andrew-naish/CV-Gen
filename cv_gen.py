@@ -98,7 +98,8 @@ def add_heading_bulleted_category_list(doc, heading_text, items):
 ## Main
 
 # Load YAML data
-logging.info(f"Loading YAML file: {yaml_path}")
+yaml_path_abs = os.path.abspath(yaml_path)
+logging.info(f"Loading YAML file: {yaml_path_abs}")
 if not os.path.isfile(yaml_path):
     logging.error(f"YAML file '{yaml_path}' does not exist.")
     print(f"Error: YAML file '{yaml_path}' does not exist.")
