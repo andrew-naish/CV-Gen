@@ -5,6 +5,7 @@ import yaml
 from docx import Document
 from docx.shared import Pt
 from docx.oxml.ns import qn
+import logging
 
 ## Init
 
@@ -14,6 +15,19 @@ parser.add_argument('--yaml', type=str, default='default.yaml', help='Path to YA
 args = parser.parse_args()
 yaml_path = args.yaml
 yaml_path_filename = os.path.basename(yaml_path)
+
+# Setup logging
+log_dir = "logs"
+os.makedirs(log_dir, exist_ok=True)
+log_filename = datetime.now().strftime("%Y-%m-%d_%H-%M-%S.txt")
+log_path = os.path.join(log_dir, log_filename)
+logging.basicConfig(
+    filename=log_path,
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+logging.info("Script started.")
 
 def add_heading(doc, heading, level=1, space_before=Pt(0)):
     """
@@ -84,14 +98,18 @@ def add_heading_bulleted_category_list(doc, heading_text, items):
 ## Main
 
 # Load YAML data
+logging.info(f"Loading YAML file: {yaml_path}")
 if not os.path.isfile(yaml_path):
+    logging.error(f"YAML file '{yaml_path}' does not exist.")
     print(f"Error: YAML file '{yaml_path}' does not exist.")
     exit(1)
 
 with open(yaml_path, 'r', encoding='utf-8') as f:
     cv_data = yaml.safe_load(f)
+logging.info("YAML file loaded successfully.")
 
 # create doc and set options
+logging.info("Creating Word document.")
 doc = Document()
 
 # Set default body font to Aptos
@@ -163,4 +181,7 @@ output_dir = "output"
 os.makedirs(output_dir, exist_ok=True)
 
 # save the document
-doc.save(os.path.join(output_dir, f"{output_name}.docx"))
+output_file_path = os.path.join(output_dir, f"{output_name}.docx")
+doc.save(output_file_path)
+logging.info(f"CV saved to {output_file_path}")
+logging.info("Script finished.")
